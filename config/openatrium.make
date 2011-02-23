@@ -15,4 +15,10 @@ projects[atrium_features][download][branch] = "openatrium-1.0-b9"
 
 ; Modules =====================================================================
 
+projects[bueditor][subdir] = "contrib"
+projects[bueditor][version] = "2.2"
+
+projects[markdowneditor][subdir] = "contrib"
+projects[markdowneditor][version] = "1.1"
+
 ; Libraries ===================================================================
