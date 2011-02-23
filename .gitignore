@@ -1,0 +1,6 @@
+.*
+!.gitignore
+!.gitmodules
+!.htaccess
+
+/profiles/openatrium/translations

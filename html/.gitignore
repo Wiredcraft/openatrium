@@ -1,0 +1,15 @@
+.*
+!.gitignore
+!.htaccess
+
+/sites/*
+!/sites/all
+!/sites/default
+
+/sites/default/*
+!/sites/default/default.settings.php
+
+/cache
+/backup
+/test*
+/potx*
