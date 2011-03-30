@@ -4,3 +4,5 @@
 !.htaccess
 
 /profiles/openatrium/translations
+/modules
+/themes
