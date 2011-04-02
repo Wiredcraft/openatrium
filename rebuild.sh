@@ -15,3 +15,5 @@ for DIR in $DIRS; do
 done;
 
 drush make --no-core --contrib-destination=. config/openatrium.make -y;
+
+git checkout modules/custom
