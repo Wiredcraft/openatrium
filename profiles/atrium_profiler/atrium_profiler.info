@@ -1,0 +1,124 @@
+name = "Atrium Profiler"
+description = "Open Atrium install profile built with Profiler."
+core = "6.x"
+base = ""
+
+theme = "ginkgo"
+
+; Open Atrium =================================================================
+
+; Drupal core
+dependencies[] = "block"
+dependencies[] = "comment"
+dependencies[] = "dblog"
+dependencies[] = "filter"
+dependencies[] = "help"
+dependencies[] = "menu"
+dependencies[] = "node"
+dependencies[] = "openid"
+dependencies[] = "search"
+dependencies[] = "system"
+dependencies[] = "taxonomy"
+dependencies[] = "upload"
+dependencies[] = "user"
+; Admin
+dependencies[] = "admin"
+; Views
+dependencies[] = "views"
+; OG
+dependencies[] = "og"
+dependencies[] = "og_access"
+dependencies[] = "og_views"
+; CTools
+dependencies[] = "ctools"
+; Context
+dependencies[] = "context"
+dependencies[] = "context_ui"
+dependencies[] = "context_layouts"
+; Date
+dependencies[] = "date_api"
+dependencies[] = "date_timezone"
+; Features
+dependencies[] = "features"
+; Image
+dependencies[] = "imageapi"
+dependencies[] = "imageapi_gd"
+dependencies[] = "imagecache"
+; Token
+dependencies[] = "token"
+; Transliteration
+dependencies[] = "transliteration"
+; Libraries
+dependencies[] = "libraries"
+; Messaging
+dependencies[] = "messaging"
+dependencies[] = "messaging_mail"
+; Notifications
+dependencies[] = "notifications"
+dependencies[] = "notifications_content"
+dependencies[] = "notifications_views"
+; Open ID
+dependencies[] = "openidadmin"
+; PURL
+dependencies[] = "purl"
+; Spaces
+dependencies[] = "spaces"
+dependencies[] = "spaces_user"
+dependencies[] = "spaces_og"
+; Ucreate
+dependencies[] = "ucreate"
+dependencies[] = "ucreate_og"
+; Strongarm
+dependencies[] = "strongarm"
+; Core features
+dependencies[] = "book"
+; Casetracker
+dependencies[] = "casetracker"
+; Calendar, date
+dependencies[] = "date"
+dependencies[] = "date_popup"
+dependencies[] = "litecal"
+; CCK
+dependencies[] = "content"
+dependencies[] = "nodereference"
+dependencies[] = "text"
+dependencies[] = "optionwidgets"
+; Feeds
+dependencies[] = "job_scheduler"
+dependencies[] = "feeds"
+dependencies[] = "parser_ical"
+; Notifications
+dependencies[] = "notifications_team"
+; Content profile
+dependencies[] = "content_profile"
+; Atrium features
+dependencies[] = "atrium"
+dependencies[] = "atrium_activity"
+dependencies[] = "atrium_blog"
+dependencies[] = "atrium_book"
+dependencies[] = "atrium_calendar"
+dependencies[] = "atrium_casetracker"
+dependencies[] = "atrium_groups"
+dependencies[] = "atrium_members"
+dependencies[] = "atrium_profile"
+dependencies[] = "atrium_shoutbox"
+; Dashboard
+dependencies[] = "spaces_dashboard"
+dependencies[] = "jquery_ui"
+; Formats
+dependencies[] = "codefilter"
+dependencies[] = "markdown"
+; Others
+dependencies[] = "boxes"
+dependencies[] = "comment_upload"
+dependencies[] = "crayon"
+dependencies[] = "diff"
+dependencies[] = "itweak_upload"
+dependencies[] = "imagecache_profiles"
+dependencies[] = "nodeformcols"
+dependencies[] = "prepopulate"
+dependencies[] = "reldate"
+dependencies[] = "xref"
+; DesignKit
+dependencies[] = "color"
+dependencies[] = "designkit"
