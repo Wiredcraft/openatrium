@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file.
+ */
+include_once('custom_atrium.features.inc');
+
+/**
+ * Implementation of hook_strongarm_alter().
+ */
+function custom_atrium_strongarm_alter(&$items) {
+  if (!empty($items['user_picture_default'])) {
+    $items['user_picture_default']->value = 'sites/all/themes/ginkgo/images/user.png';
+  }
+}
