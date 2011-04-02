@@ -122,3 +122,10 @@ dependencies[] = "xref"
 ; DesignKit
 dependencies[] = "color"
 dependencies[] = "designkit"
+
+; Others & Custom =============================================================
+
+dependencies[] = "bueditor"
+dependencies[] = "markdowneditor"
+
+dependencies[] = "custom_atrium"
