@@ -6,6 +6,14 @@
 !/sites/all
 !/sites/default
 
+/sites/all/*
+!/sites/all/modules
+/sites/all/modules/*
+!/sites/all/modules/custom
+
+/sites/all/modules/custom/*
+!/sites/all/modules/custom/custom_atrium
+
 /sites/default/*
 !/sites/default/default.settings.php
 

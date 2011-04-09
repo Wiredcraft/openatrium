@@ -3,12 +3,3 @@
 !.gitmodules
 !.htaccess
 
-/profiles/openatrium/translations
-
-/modules/*
-/themes/*
-/libraries/*
-
-!/modules/custom
-/modules/custom/*
-!/modules/custom/custom_atrium
