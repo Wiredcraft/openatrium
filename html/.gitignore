@@ -21,3 +21,6 @@
 /backup
 /test*
 /potx*
+
+drushrc.php
+

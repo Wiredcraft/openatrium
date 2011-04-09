@@ -7,7 +7,7 @@ includes[openatrium] = "../profiles/openatrium/openatrium.make"
 
 ; Override openatrium =========================================================
 
-libraries[translations][destination] = "profiles/openatrium"
+libraries[translations] = NULL
 
 ; Modules =====================================================================
 
