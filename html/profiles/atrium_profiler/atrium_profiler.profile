@@ -113,8 +113,8 @@ function _install_custom_configure($url) {
   $batch['operations'][] = array('_openatrium_intranet_configure_check', array());
 
   // Revert features.
-  $batch['operations'][] = array('profile_helper_revert_features', array());
-  $batch['operations'][] = array('profile_helper_flush_cache', array());
+  // $batch['operations'][] = array('profile_helper_revert_features', array());
+  // $batch['operations'][] = array('profile_helper_flush_cache', array());
 
   // Next - the batch task.
   variable_set('install_task', 'install_custom_configure');

@@ -3,7 +3,7 @@ api = "2"
 
 ; Includes ====================================================================
 
-includes[openatrium] = "../profiles/openatrium/openatrium.make"
+includes[openatrium] = "../html/profiles/openatrium/openatrium.make"
 
 ; Override openatrium =========================================================
 

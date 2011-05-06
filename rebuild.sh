@@ -1,20 +1,45 @@
-#!/bin/sh
+#!/bin/bash
 
-DIRS="atrium_features contrib custom developer l10n";
-for DIR in $DIRS; do
-  if [ -d "html/sites/all/modules/$DIR" ]; then
-    rm -rf "html/sites/all/modules/$DIR";
-  fi;
-done;
+drush make --no-core --contrib-destination=temp_all config/openatrium.make -y;
 
-DIRS="ginkgo rubik tao";
-for DIR in $DIRS; do
-  if [ -d "html/sites/all/themes/$DIR" ]; then
-    rm -rf "html/sites/all/themes/$DIR";
-  fi;
-done;
+if [ ! -d html/sites/all ]; then
+	mkdir -p html/sites/all;
+fi;
 
-drush make --no-core --contrib-destination=html/sites/all config/openatrium.make -y;
+case "$1" in
+	-[yY])
+		SELECTION="y";
+		;;
+	*)
+		echo -e "Replace all projects? [Y/n]: \c";
+		read SELECTION;
+		;;
+esac
 
-git checkout html/sites/all/modules/custom;
-
+case "$SELECTION" in
+	[nN])
+		echo "Canceled.";
+		;;
+	*)
+		if [ ! -d temp_all ]; then
+			echo "Failed.";
+			exit;
+		fi;
+		echo -e "Replacing all...\c";
+		for DIR in `ls temp_all`; do
+			if [ ! -d "html/sites/all/$DIR" ]; then
+				 mkdir -p "html/sites/all/$DIR";
+			fi;
+			for SUB_DIR in `ls "temp_all/$DIR"`; do
+				if [ -d "html/sites/all/$DIR/$SUB_DIR" ]; then
+					 rm -rf "html/sites/all/$DIR/$SUB_DIR";
+				fi;
+				cp -R "temp_all/$DIR/$SUB_DIR" "html/sites/all/$DIR/";
+				echo -e ".\c";
+			done;
+		done;
+		rm -rf temp_all;
+		git checkout html/sites/all/modules/custom;
+		echo "done.";
+		;;
+esac
