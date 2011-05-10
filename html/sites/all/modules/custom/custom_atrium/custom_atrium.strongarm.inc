@@ -33,5 +33,19 @@ function custom_atrium_strongarm() {
   );
 
   $export['bueditor_roles'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_default_timezone';
+  $strongarm->value = 28800;
+
+  $export['date_default_timezone'] = $strongarm;
+  $strongarm = new stdClass;
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'date_default_timezone_name';
+  $strongarm->value = 'Asia/Shanghai';
+
+  $export['date_default_timezone_name'] = $strongarm;
   return $export;
 }

@@ -8,7 +8,105 @@ include_once('custom_atrium.features.inc');
  * Implementation of hook_strongarm_alter().
  */
 function custom_atrium_strongarm_alter(&$items) {
+  // Default user picture.
   if (!empty($items['user_picture_default'])) {
     $items['user_picture_default']->value = 'sites/all/themes/ginkgo/images/user.png';
   }
+}
+
+/**
+ * Implementation of hook_views_default_views_alter().
+ */
+function custom_atrium_views_default_views_alter(&$views) {
+  // Recent activity.
+  if (!empty($views['activity_listing'])) {
+    $view = &$views['activity_listing'];
+    $view->set_display('default');
+    $view->display_handler->override_option('use_ajax', FALSE);
+    $view->display_handler->override_option('items_per_page', 30);
+    $view->destroy(); // @see _views_discover_default_views() in cache.inc.
+  }
+}
+
+/**
+ * Implementation of hook_context_default_contexts_alter().
+ */
+function custom_atrium_context_default_contexts_alter(&$items) {
+  // Site dashboard.
+  if (!empty($items['spaces_dashboard-custom-1'])) {
+    $items['spaces_dashboard-custom-1']->reactions['block']['blocks'] = _custom_atrium_custom_dashboard_blocks();
+  }
+}
+
+/**
+ * Implementation of hook_spaces_presets_alter().
+ */
+function custom_atrium_spaces_presets_alter(&$items) {
+  // Private group.
+  if (!empty($items['atrium_groups_private'])) {
+    $value =& $items['atrium_groups_private']->value;
+
+    // Features.
+    $value['variable']['spaces_features']['atrium_calendar'] = '1';
+    $value['variable']['spaces_features']['atrium_casetracker'] = '1';
+
+    // Dashboard.
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks'] = _custom_atrium_custom_dashboard_blocks();
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks']['right-1']['delta'] = 'calendar_upcoming-block_1';
+  }
+
+  // Public group.
+  if (!empty($items['atrium_groups_public'])) {
+    $value =& $items['atrium_groups_public']->value;
+
+    // Features.
+    $value['variable']['spaces_features']['atrium_calendar'] = '1';
+
+    // Dashboard.
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks'] = _custom_atrium_custom_dashboard_blocks();
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks']['right-1']['delta'] = 'calendar_upcoming-block_1';
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks']['right-2']['delta'] = 'blog_comments-block_1';
+  }
+
+  // Simple profile.
+  if (!empty($items['atrium_members_simple'])) {
+    $value =& $items['atrium_members_simple']->value;
+
+    // Dashboard.
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks'] = _custom_atrium_custom_dashboard_blocks();
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks']['right-1']['delta'] = 'groups_listing-block_1';
+    $value['context']['spaces_dashboard-custom-1:reaction:block']['blocks']['right-2']['delta'] = 'casetracker_cases-block_4';
+  }
+}
+
+/**
+ * Custom dashboard block settings.
+ */
+function _custom_atrium_custom_dashboard_blocks() {
+  return array(
+    'content-0' => array(
+      'module' => 'views',
+      'delta' => 'activity_listing-block_1',
+      'region' => 'content',
+      'weight' => 0,
+    ),
+    'right-0' => array(
+      'module' => 'atrium_calendar',
+      'delta' => 'mini',
+      'region' => 'right',
+      'weight' => 0,
+    ),
+    'right-1' => array(
+      'module' => 'views',
+      'delta' => 'groups_listing-block_2',
+      'region' => 'right',
+      'weight' => 1,
+    ),
+    'right-2' => array(
+      'module' => 'views',
+      'delta' => 'casetracker_cases-block_2',
+      'region' => 'right',
+      'weight' => 2,
+    ),
+  );
 }
