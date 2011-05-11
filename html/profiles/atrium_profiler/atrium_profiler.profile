@@ -104,17 +104,15 @@ function _install_custom_configure($url) {
   $batch = array();
   $batch['title'] = st('Configuring @drupal', array('@drupal' => drupal_install_profile_name()));
 
+  // Open Atrium.
+  $batch['operations'][] = array('_openatrium_intranet_configure', array());
+
   // Invoke profiler.
   $batch['operations'][] = array('profile_helper_invoke_profiler', array(PROFILE_KEY, 'profile', $url));
   $batch['operations'][] = array('profile_helper_flush_cache', array());
 
   // Open Atrium.
-  $batch['operations'][] = array('_openatrium_intranet_configure', array());
   $batch['operations'][] = array('_openatrium_intranet_configure_check', array());
-
-  // Revert features.
-  // $batch['operations'][] = array('profile_helper_revert_features', array());
-  // $batch['operations'][] = array('profile_helper_flush_cache', array());
 
   // Next - the batch task.
   variable_set('install_task', 'install_custom_configure');
